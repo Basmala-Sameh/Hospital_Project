@@ -15,4 +15,12 @@ public:
         cout << "ID: " << id << " | Name: " << name << " | Age: " << age;
     }
 
+    int getId() const { return id; }
+    string getName() const { return name; }
+    int getAge() const { return age; }
+
+    void setID(const int& i) { id = i; }
+    void setName(const string& n) { name = n; }
+    void setAge(int a) { age = a; }
+
 }
