@@ -1,4 +1,6 @@
-#include <iostream>
+#ifndef PERSON_H
+#define PERSON_H
+
 #include <string>
 using namespace std;
 
@@ -6,21 +8,29 @@ class Person {
 protected:
     int id;
     string name;
-    int age;
+    string email;
+    string phone;
+    string address;
+
 public:
-    Person(int id = 0, string name = "", int age = 0)
-        : id(id), name(name), age(age) {
-    }
-    virtual void display() const {
-        cout << "ID: " << id << " | Name: " << name << " | Age: " << age;
-    }
+    Person();
+    Person(int, const string&, const string&, const string&, const string&);
+    virtual ~Person() {}
 
-    int getId() const { return id; }
-    string getName() const { return name; }
-    int getAge() const { return age; }
+    int getId() const;
+    string getName() const;
+    string getEmail() const;
+    string getPhone() const;
+    string getAddress() const;
 
-    void setID(const int& i) { id = i; }
-    void setName(const string& n) { name = n; }
-    void setAge(int a) { age = a; }
+    void setId(int);
+    void setName(const string&);
+    void setEmail(const string&);
+    void setPhone(const string&);
+    void setAddress(const string&);
 
-}
+    void updateDetails(const string&, const string&, const string&, const string&);
+    virtual string getDetails() const;
+};
+
+#endif
