@@ -11,5 +11,7 @@ class HospitalSystem
 protected:
 	vector<Doctor*> doctors;
 public:
+	void addTimeSlot(vector<string>t) {};
+	void add_doctor() {};
 	void find_doctor_by_speciality(string s) {}
 };

@@ -7,6 +7,20 @@
 #include <iomanip>
 using namespace std;
 
+void HospitalSystem::addTimeSlot(vector<string>t)
+{
+	string start, end, slot;
+	cout << "Enter the start of the slot : " << endl;
+	cin >> start;
+	cout << "Enter the end of the slot   : " << endl;
+	cin >> end;
+
+	slot = start + " - " + end;
+	t.push_back(slot);
+}
+
+void HospitalSystem::add_doctor(){}
+
 void HospitalSystem::find_doctor_by_speciality(string s)
 {
 	// get all doctors of same specilization

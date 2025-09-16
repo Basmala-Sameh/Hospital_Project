@@ -17,6 +17,8 @@ public:
 	string getSpecilization() const { return specialization; }
 	vector<string>get_Time_Slots()const { return timeSlots; }
 
+	void addTimeSlot() {};
+
 	Doctor(int i,string n ,int a, string s, vector<string>t) :Person(i,n,a)
 	{ 
 		specialization = s; 
