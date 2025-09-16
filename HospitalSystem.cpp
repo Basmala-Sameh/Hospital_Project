@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include<vector>
+#include <unordered_map>
 #include <iomanip>
 using namespace std;
 
@@ -36,14 +37,102 @@ void HospitalSystem::add_doctor()
 	cout << "How many time slots doctor have? " << endl;
 	cin >> slots;
 
-	for (int i = 0; i < slots; i++)
+	for (int j = 0; j < slots; ji++)
 	{
-		cout << "The " << i + 1 << "slot : " << endl;
+		cout << "The " << j + 1 << "slot : " << endl;
 		addTimeSlot(t);
 	}
 
 	Doctor* d=new Doctor(i, n, a, s, t);
-	doctors.push_back(d);
+	doctors[i] = d;
+
+}
+
+void HospitalSystem::delete_doctor(int i)
+{
+	if (doctors.empty())
+	{
+		cout << "No doctors available to delete " <<endl;
+		return;
+	}
+
+	if (doctors.count(i))
+	{
+		delete doctors[i]; // from memory
+		doctors.erase(i);
+		cout << "Doctor deleted succssefully " << endl;
+	}
+
+	
+
+}
+
+void HospitalSystem::update_doctor(int i)
+{
+	if (doctors.empty())
+	{
+		cout << "No doctors available to delete " << endl;
+		return;
+	}
+	if (doctors.count(i))
+	{
+		cout << "Which field you want to update? " << endl
+			<< "1.Name " << endl
+			<< "2.ID " << endl
+			<< "3.Specilization " << endl
+			<< "4.Age " << endl;
+		int option; cin >> option;
+		switch (option)
+		{
+		case 1:
+		{
+			cout << "Enter the updated name : " << endl;
+			string n; cin >> n;
+			doctors[i]->setName(n);
+			break;
+		}
+			
+		case 2:
+		{
+			cout << "Enter the new ID: ";
+			int newId;
+			cin >> newId;
+
+			// move the Doctor to the new key
+			doctors[newId] = doctors[i];
+			doctors.erase(i);
+			cout << "ID updated successfully!"<<endl;
+			break;
+		}
+			
+		case 3:
+		{
+			cout << "Enter the updated specialization: ";
+			string s;
+			cin >> s;
+			doctors[i]->setSpecilization(s);
+			break;
+		}
+			
+		case 4:
+		{
+			cout << "Enter the updated age: ";
+			int a;
+			cin >> a;
+			doctors[i]->setAge(a);
+			break;
+		}
+		default:
+			cout << "Invalid option!\n";
+			break;
+			
+		}
+
+	}
+	else
+	{
+		cout << "Doctor not found!" << endl;
+	}
 
 }
 
@@ -53,20 +142,17 @@ void HospitalSystem::find_doctor_by_speciality(string s)
 	vector<Doctor*> filterd;
 	for (auto d : doctors)
 	{
-		if (d->getSpecilization() == s)
+		if (d.second->getSpecilization() == s)
 		{
-			filterd.push_back(d);
+			filterd.push_back(d.second);
 		}
 	}
 
-	
-		if (filterd.empty())
-		{
-			cout<< "No doctors available for this specialization: "<<endl;
-			return;
-		}
-	
-	
+	if (filterd.empty())
+	{
+		cout<< "No doctors available for this specialization: "<<endl;
+		return;
+	}
 
 	// printing them
 	cout << left << setw(15) << "Doctor" << "Available slots" << endl;
