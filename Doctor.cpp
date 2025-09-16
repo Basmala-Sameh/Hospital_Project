@@ -1,7 +1,7 @@
 #include "Doctor.h"
 #include <sstream>
 
-Doctor::Doctor() {}
+Doctor::Doctor() : Person(), specialization("") {}
 
 Doctor::Doctor(int id, const string& n, const string& e, const string& p, const string& a, const string& spec)
     : Person(id, n, e, p, a), specialization(spec) {}
@@ -10,7 +10,7 @@ string Doctor::getSpecialization() const {
     return specialization;
 }
 
-void Doctor::setSpecialization(const string& spec) {   
+void Doctor::setSpecialization(const string& spec) {
     specialization = spec;
 }
 
@@ -31,7 +31,8 @@ int Doctor::getQueueSize() const {
 
 string Doctor::getDetails() const {
     ostringstream oss;
-    oss << Person::getDetails() << ", Specialization: " << specialization
+    oss << Person::getDetails()
+        << ", Specialization: " << specialization
         << ", Appointments in Queue: " << appointmentQueue.size();
     return oss.str();
 }

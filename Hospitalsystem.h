@@ -9,18 +9,19 @@
 #include "FileHandler.h"
 #include "OperationStack.h"
 
-class HospitalSystem {
+
+class HospitalSystem
+{
     LinkedList<Patient> patients;
     LinkedList<Doctor> doctors;
     LinkedList<Staff> staff;
     LinkedList<Appointment> appointments;
-    FileHandler* fileHandler;
+    FileHandler *fileHandler;
     OperationStack opStack;
 
 public:
     HospitalSystem();
     ~HospitalSystem();
-
 
     void addPatient();
     void updatePatient();
@@ -28,7 +29,7 @@ public:
     void searchPatient();
     void viewPatients();
 
-     void addDoctor();
+    void addDoctor();
     void updateDoctor();
     void deleteDoctor();
     void searchDoctor();
@@ -40,12 +41,10 @@ public:
     void searchStaff();
     void viewStaff();
 
-
     void scheduleAppointment();
     void cancelAppointment();
     void viewAppointments();
 
-    
     void saveData();
     void loadData();
 };

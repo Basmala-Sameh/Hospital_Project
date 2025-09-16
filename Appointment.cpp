@@ -1,7 +1,7 @@
 #include "Appointment.h"
 #include <sstream>
 
-Appointment::Appointment() : appointmentId(0), patientId(0), doctorId(0), status("scheduled") {}
+Appointment::Appointment() : appointmentId(0), patientId(0), doctorId(0), dateTime(""), status("scheduled") {}
 
 Appointment::Appointment(int x, int y, int z, const string& dt, const string& status_)
     : appointmentId(x), patientId(y), doctorId(z), dateTime(dt), status(status_) {}

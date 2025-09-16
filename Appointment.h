@@ -14,7 +14,6 @@ public:
     Appointment();
     Appointment(int, int, int, const string&, const string& = "scheduled");
 
-    int getId() const { return appointmentId; }   // ✅ ضروري للـ LinkedList
     int getAppointmentId() const;
     int getPatientId() const;
     int getDoctorId() const;
@@ -24,6 +23,9 @@ public:
     void cancel();
     void reschedule(const string&);
     string toString() const;
+
+    int getId() const { return appointmentId; } 
 };
+
 
 #endif

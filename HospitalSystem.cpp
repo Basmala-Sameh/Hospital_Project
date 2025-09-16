@@ -19,7 +19,7 @@ void HospitalSystem::addPatient() {
     cout << "Enter Phone: "; cin >> phone;
     cout << "Enter Address: "; cin >> address;
 
-    Patient p(id, name, email, phone, address);
+    Patient p(id, name, email, phone, address, "", "", "");
     patients.push_back(p);
     opStack.pushOperation("Add Patient: " + name);
 }
@@ -135,7 +135,7 @@ void HospitalSystem::addStaff() {
     cout << "Enter Address: "; cin >> address;
     cout << "Enter Role: "; cin >> role;
 
-    Staff s(id, name, email, phone, address, role);
+    Staff s(id, name, email, phone, address, role, "", 0.0);
     staff.push_back(s);
     opStack.pushOperation("Add Staff: " + name);
 }
