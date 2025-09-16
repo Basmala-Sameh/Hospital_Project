@@ -7,7 +7,7 @@
 #include <iomanip>
 using namespace std;
 
-void HospitalSystem::addTimeSlot(vector<string>t)
+void HospitalSystem::addTimeSlot(vector<string>&t)
 {
 	string start, end, slot;
 	cout << "Enter the start of the slot : " << endl;
@@ -19,7 +19,33 @@ void HospitalSystem::addTimeSlot(vector<string>t)
 	t.push_back(slot);
 }
 
-void HospitalSystem::add_doctor(){}
+void HospitalSystem::add_doctor()
+{
+	string n, s;
+	int i ,a,slots;
+	vector<string>t;
+
+	cout << "Enter doctor name : " << endl;
+	cin >> n;
+	cout << "Enter doctor ID : " << endl;
+	cin >> i;
+	cout << "Enter doctor Specilization : " << endl;
+	cin >> s;
+	cout << "Enter doctor Age : " << endl;
+	cin >> a;
+	cout << "How many time slots doctor have? " << endl;
+	cin >> slots;
+
+	for (int i = 0; i < slots; i++)
+	{
+		cout << "The " << i + 1 << "slot : " << endl;
+		addTimeSlot(t);
+	}
+
+	Doctor* d=new Doctor(i, n, a, s, t);
+	doctors.push_back(d);
+
+}
 
 void HospitalSystem::find_doctor_by_speciality(string s)
 {
@@ -66,4 +92,4 @@ void HospitalSystem::find_doctor_by_speciality(string s)
 		cout << endl;
 	}
 }
-
+
