@@ -7,24 +7,29 @@
 using namespace std;
 
 void showMenu() {
-    cout << "\n===== Hospital Management System =====\n";
-    cout << "1. Add Patient\n";
-    cout << "2. Update Patient\n";
-    cout << "3. Delete Patient\n";
-    cout << "4. Search Patient\n";
-    cout << "5. View All Patients\n";
-    cout << "6. Add Doctor\n";
-    cout << "7. View All Doctors\n";
-    cout << "8. Add Staff\n";
-    cout << "9. View All Staff\n";
-    cout << "10. Schedule Appointment\n";
-    cout << "11. View Appointments\n";
-    cout << "12. Cancel Appointment\n";
-    cout << "13. Save Data\n";
-    cout << "14. Load Data\n";
-    cout << "0. Exit\n";
-    cout << "Choose option: ";
+     cout << "\n\t\t\t\t*================team1=================*\n";
+    cout << "\n\t\t\t\t*=======================================*\n";
+    cout << "\t\t\t\t|   Hospital Management System          |\n";
+    cout << "\t\t\t\t*=======================================*\n";
+    cout << "\t\t\t\t|  1. Add Patient                       |\n";
+    cout << "\t\t\t\t|  2. Update Patient                    |\n";
+    cout << "\t\t\t\t|  3. Delete Patient                    |\n";
+    cout << "\t\t\t\t|  4. Search Patient                    |\n";
+    cout << "\t\t\t\t|  5. View All Patients                 |\n";
+    cout << "\t\t\t\t|  6. Add Doctor                        |\n";
+    cout << "\t\t\t\t|  7. View All Doctors                  |\n";
+    cout << "\t\t\t\t|  8. Add Staff                         |\n";
+    cout << "\t\t\t\t|  9. View All Staff                    |\n";
+    cout << "\t\t\t\t|  10. Schedule Appointment             |\n";
+    cout << "\t\t\t\t|  11. View Appointments                |\n";
+    cout << "\t\t\t\t|  12. Cancel Appointment               |\n";
+    cout << "\t\t\t\t|  13. Save Data                        |\n";
+    cout << "\t\t\t\t|  14. Load Data                        |\n";
+    cout << "\t\t\t\t|  0. Exit                              |\n";
+    cout << "\t\t\t\t*=======================================*\n";
+    cout << "\n\t\t\t\tChoose option: ";
 }
+
 
 int main() {
     HospitalSystem hospital;
@@ -33,7 +38,7 @@ int main() {
     do {
         showMenu();
         cin >> choice;
-
+         system("cls");
         switch (choice) {
             case 1: hospital.addPatient(); break;
             case 2: hospital.updatePatient(); break;
@@ -53,6 +58,7 @@ int main() {
             default: cout << "Invalid choice. Try again.\n";
         }
     } while (choice != 0);
+
 
     return 0;
 }

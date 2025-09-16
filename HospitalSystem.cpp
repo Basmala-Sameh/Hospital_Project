@@ -12,12 +12,13 @@ HospitalSystem::~HospitalSystem() {
 
 
 void HospitalSystem::addPatient() {
-    int id; string name, email, phone, address;
+    int id,medicalHistory; string name, email, phone, address , bloodType ,allergies;
     cout << "Enter Patient ID: "; cin >> id;
     cout << "Enter Name: "; cin >> name;
     cout << "Enter Email: "; cin >> email;
     cout << "Enter Phone: "; cin >> phone;
     cout << "Enter Address: "; cin >> address;
+
 
     Patient p(id, name, email, phone, address, "", "", "");
     patients.push_back(p);
@@ -232,3 +233,4 @@ void HospitalSystem::loadData() {
     fileHandler->loadAppointments(appointments);
     cout << "Data loaded successfully.\n";
 }
+
