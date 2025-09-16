@@ -47,6 +47,8 @@ public:
 
     void saveData();
     void loadData();
+    Doctor* findBySpeciality(const string& speciality);
+
 };
 
 #endif

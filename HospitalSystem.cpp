@@ -187,16 +187,42 @@ void HospitalSystem::viewStaff() {
 
 
 void HospitalSystem::scheduleAppointment() {
-    int id, pid, did; string date;
+    int id, pid; string date;
     cout << "Enter Appointment ID: "; cin >> id;
     cout << "Enter Patient ID: "; cin >> pid;
-    cout << "Enter Doctor ID: "; cin >> did;
-    cout << "Enter Date/Time: "; cin >> date;
+
+    cout << "Choose Doctor by:\n";
+    cout << "1. Doctor ID\n";
+    cout << "2. Doctor Speciality\n";
+    int choice; cin >> choice;
+
+    int did = -1;
+    if (choice == 1) {
+        cout << "Enter Doctor ID: ";
+        cin >> did;
+    }
+    else if (choice == 2) {
+    string speciality;
+    cout << "Enter Doctor Speciality: ";
+    cin >> speciality;
+
+    Doctor* d = findBySpeciality(speciality);
+    if (d) did = d->getId();
+    else {
+        cout << "Doctor with this speciality not found!\n";
+        return;
+    }
+}
+
+
+    cout << "Enter Date/Time: ";
+    cin >> date;
 
     Appointment a(id, pid, did, date);
     appointments.push_back(a);
     opStack.pushOperation("Schedule Appointment ID: " + to_string(id));
 }
+
 
 void HospitalSystem::cancelAppointment() {
     int id; cout << "Enter Appointment ID to cancel: "; cin >> id;
@@ -232,5 +258,15 @@ void HospitalSystem::loadData() {
     fileHandler->loadStaff(staff);
     fileHandler->loadAppointments(appointments);
     cout << "Data loaded successfully.\n";
+}
+Doctor* HospitalSystem::findBySpeciality(const string& speciality) {
+    Node<Doctor>* cur = doctors.getHead();
+    while (cur) {
+        if (cur->data.getSpecialization() == speciality) {
+            return &(cur->data);
+        }
+        cur = cur->next;
+    }
+    return nullptr;
 }
 
